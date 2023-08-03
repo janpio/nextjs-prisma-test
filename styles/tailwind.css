@@ -1,0 +1,11 @@
+@tailwind base; /* Preflight will be injected here */
+@tailwind components;
+
+/* PdfViewer */
+@layer utilities {
+  .clipBottom {
+    clip-path: polygon(100% 50%, 0 0, 100% 0, 50% 100%, 0 0);
+  }
+}
+
+@tailwind utilities;

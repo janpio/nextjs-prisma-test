@@ -1,0 +1,30 @@
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "dataproxy"
+}
+
+generator pothos {
+  provider = "prisma-pothos-types"
+}
+
+// datasource db {
+//   provider = "sqlite"
+//   url      = "file:./dev.db"
+// }
+
+datasource db {
+  provider     = "mysql"
+  // url          = env("DATABASE_MAIN1_URL") // mysql://
+  // url          = env("DATABASE_DEV_URL") // mysql://
+  url          = env("PrismaDB") // prisma://
+  // url          = env("ACCELERATE_URL") // prisma://accelerate
+  directUrl    = env("DATABASE_DEV_URL") // mysql://
+  relationMode = "prisma"
+}
+
+model Dictionary {
+  id          Int     @id @default(autoincrement())
+  word        String  @unique
+  translation String  @db.Text
+  explanation String? @db.Text
+}

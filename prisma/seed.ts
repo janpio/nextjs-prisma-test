@@ -1,11 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 
-import { covenants } from '../components/config/covenants';
-import { dictionary } from '../components/config/dictionary';
-import { godNames } from '../components/config/godNames';
-import { godPromises } from '../components/config/godPromises';
-import { prophecies } from '../components/config/prophecies';
-import { topics } from '../components/config/topics';
+// import { covenants } from '../components/config/covenants';
+// import { dictionary } from '../components/config/dictionary';
+// import { godNames } from '../components/config/godNames';
+// import { godPromises } from '../components/config/godPromises';
+// import { prophecies } from '../components/config/prophecies';
+// import { topics } from '../components/config/topics';
 
 const prisma = new PrismaClient();
 
@@ -25,140 +25,140 @@ type godNameRefType = {
   tooltip: string;
 };
 
-const seedCovenants = async () => {
-  await prisma.covenant.deleteMany();
+// const seedCovenants = async () => {
+//   await prisma.covenant.deleteMany();
 
-  for (const c of covenants) {
-    const item = await prisma.covenant.create({
-      data: {
-        covenant: c.covenant,
-        ref: c.ref,
-      },
-    });
-    console.log('--------------------\n', item);
-  }
-};
+//   for (const c of covenants) {
+//     const item = await prisma.covenant.create({
+//       data: {
+//         covenant: c.covenant,
+//         ref: c.ref,
+//       },
+//     });
+//     console.log('--------------------\n', item);
+//   }
+// };
 
-const seedDictionary = async () => {
-  await prisma.dictionary.deleteMany();
+// const seedDictionary = async () => {
+//   await prisma.dictionary.deleteMany();
 
-  for (const d of dictionary) {
-    const item = await prisma.dictionary.create({
-      data: {
-        // name: d.name,
-        word: d.word,
-        translation: d.translation,
-        explanation: d.explanation,
-      },
-    });
-    console.log('--------------------\n', item);
-  }
-};
+//   for (const d of dictionary) {
+//     const item = await prisma.dictionary.create({
+//       data: {
+//         // name: d.name,
+//         word: d.word,
+//         translation: d.translation,
+//         explanation: d.explanation,
+//       },
+//     });
+//     console.log('--------------------\n', item);
+//   }
+// };
 
-const seedGodNames = async () => {
-  // await prisma.dictionary.deleteMany();
+// const seedGodNames = async () => {
+//   // await prisma.dictionary.deleteMany();
 
-  for (const d of godNames) {
-    const ref2: godNameRefType[] = [];
+//   for (const d of godNames) {
+//     const ref2: godNameRefType[] = [];
 
-    d.ref?.map((r) => {
-      const item: godNameRefType = {
-        ref: r.ref,
-        tooltip: r.tooltip,
-      };
-      ref2.push(item);
-    });
-    console.log('ref: ', ref2);
+//     d.ref?.map((r) => {
+//       const item: godNameRefType = {
+//         ref: r.ref,
+//         tooltip: r.tooltip,
+//       };
+//       ref2.push(item);
+//     });
+//     console.log('ref: ', ref2);
 
-    await prisma.godName.create({
-      data: {
-        // name: d.name,
-        nameOfGod: d.nameOfGod,
-        translation: d.translation,
-        ref: { create: ref2 },
-      },
-    });
-  }
-};
+//     await prisma.godName.create({
+//       data: {
+//         // name: d.name,
+//         nameOfGod: d.nameOfGod,
+//         translation: d.translation,
+//         ref: { create: ref2 },
+//       },
+//     });
+//   }
+// };
 
-const seedTopics = async () => {
-  // await prisma.topics.deleteMany();
-  // await prisma.questionRef.deleteMany();
-  // await prisma.questionHint.deleteMany();
+// const seedTopics = async () => {
+//   // await prisma.topics.deleteMany();
+//   // await prisma.questionRef.deleteMany();
+//   // await prisma.questionHint.deleteMany();
 
-  for (const t of topics) {
-    const ref2: refType[] = [];
-    const hint2: hintType[] = [];
+//   for (const t of topics) {
+//     const ref2: refType[] = [];
+//     const hint2: hintType[] = [];
 
-    // console.log('--------------------\n', t.id, t.ord, t.question);
-    t.ref.map((r) => {
-      const item: refType = {
-        ref: r.ref,
-        tooltip: r.tooltip,
-      };
-      ref2.push(item);
-    });
-    console.log('ref: ', ref2);
+//     // console.log('--------------------\n', t.id, t.ord, t.question);
+//     t.ref.map((r) => {
+//       const item: refType = {
+//         ref: r.ref,
+//         tooltip: r.tooltip,
+//       };
+//       ref2.push(item);
+//     });
+//     console.log('ref: ', ref2);
 
-    t.hint.map((h) => {
-      const item: hintType = { res: h.res, ref: h.ref, tooltip: h.tooltip };
-      hint2.push(item);
-    });
-    console.log('hint: ', hint2);
+//     t.hint.map((h) => {
+//       const item: hintType = { res: h.res, ref: h.ref, tooltip: h.tooltip };
+//       hint2.push(item);
+//     });
+//     console.log('hint: ', hint2);
 
-    await prisma.topic.create({
-      data: {
-        ord: t.ord,
-        question: t.question,
-        ref: { create: ref2 },
-        hint: { create: hint2 },
-      },
-    });
-  }
-};
+//     await prisma.topic.create({
+//       data: {
+//         ord: t.ord,
+//         question: t.question,
+//         ref: { create: ref2 },
+//         hint: { create: hint2 },
+//       },
+//     });
+//   }
+// };
 
-const seedGodPromises = async () => {
-  // await prisma.dictionary.deleteMany();
+// const seedGodPromises = async () => {
+//   // await prisma.dictionary.deleteMany();
 
-  for (const p of godPromises) {
-    const item = await prisma.godPromise.create({
-      data: {
-        promise: p.promise,
-        ref: p.ref,
-      },
-    });
-    console.log('--------------------\n', item);
-  }
-};
+//   for (const p of godPromises) {
+//     const item = await prisma.godPromise.create({
+//       data: {
+//         promise: p.promise,
+//         ref: p.ref,
+//       },
+//     });
+//     console.log('--------------------\n', item);
+//   }
+// };
 
-const seedProphecies = async () => {
-  // await prisma.dictionary.deleteMany();
+// const seedProphecies = async () => {
+//   // await prisma.dictionary.deleteMany();
 
-  for (const p of prophecies) {
-    const item = await prisma.prophecie.create({
-      data: {
-        prophecie: p.prophecie,
-        ref: p.ref,
-        fulfilled: p.fulfilled,
-        history: p.history,
-      },
-    });
-    console.log('--------------------\n', item);
-  }
-};
+//   for (const p of prophecies) {
+//     const item = await prisma.prophecie.create({
+//       data: {
+//         prophecie: p.prophecie,
+//         ref: p.ref,
+//         fulfilled: p.fulfilled,
+//         history: p.history,
+//       },
+//     });
+//     console.log('--------------------\n', item);
+//   }
+// };
 
-// ====================================================
+// // ====================================================
 
-const readCovenants = async () => {
-  const item = await prisma.covenant.findMany({
-    select: {
-      id: true,
-      covenant: true,
-      ref: true,
-    },
-  });
-  console.log('--------------------\n', item);
-};
+// const readCovenants = async () => {
+//   const item = await prisma.covenant.findMany({
+//     select: {
+//       id: true,
+//       covenant: true,
+//       ref: true,
+//     },
+//   });
+//   console.log('--------------------\n', item);
+// };
 
 const readDictionary = async () => {
   const item = await prisma.dictionary.findMany({
@@ -173,17 +173,17 @@ const readDictionary = async () => {
   console.log('--------------------\n', item);
 };
 
-const readGodNames = async () => {
-  const item = await prisma.godName.findMany({
-    select: {
-      id: true,
-      // name: true,
-      nameOfGod: true,
-      translation: true,
-    },
-  });
-  console.log('--------------------\n', item);
-};
+// const readGodNames = async () => {
+//   const item = await prisma.godName.findMany({
+//     select: {
+//       id: true,
+//       // name: true,
+//       nameOfGod: true,
+//       translation: true,
+//     },
+//   });
+//   console.log('--------------------\n', item);
+// };
 
 // ====================================================
 

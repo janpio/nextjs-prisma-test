@@ -1,6 +1,6 @@
 import Loading from '@/components/loading';
-import CheckCircleSVG from '@/components/svg/checkCircle-svg';
-import MinusCircleSVG from '@/components/svg/minusCircle-svg';
+// import CheckCircleSVG from '@/components/svg/checkCircle-svg';
+// import MinusCircleSVG from '@/components/svg/minusCircle-svg';
 import {
   DeleteDictionaryItemMutation,
   GetDictionaryItemQuery,
@@ -117,7 +117,7 @@ export default function Reference({}: Props) {
                   <div className='flex flex-row'>
                     [{+router.query.id!}] {DictionaryItem.name}
                     <button type='submit' className='ml-2'>
-                      <MinusCircleSVG />
+                      {/* <MinusCircleSVG /> */}
                     </button>
                   </div>
                 </form>
@@ -134,9 +134,9 @@ export default function Reference({}: Props) {
                           onChange={(e) => setUpdatedName(e.target.value)}
                         />
                         <button type='submit' disabled={!updatedName}>
-                          <CheckCircleSVG
-                            color={updatedName ? '#766852' : '#D6C6AC'}
-                          />
+                          {/* <CheckCircleSVG */}
+                            {/* color={updatedName ? '#766852' : '#D6C6AC'} */}
+                          {/* /> */}
                         </button>
                       </div>
                     </form>
@@ -157,9 +157,9 @@ export default function Reference({}: Props) {
                             }
                           />
                           <button type='submit' disabled={!updatedTranslation}>
-                            <CheckCircleSVG
+                            {/* <CheckCircleSVG
                               color={updatedTranslation ? '#766852' : '#D6C6AC'}
-                            />
+                            /> */}
                           </button>
                         </div>
                       </form>
@@ -181,9 +181,9 @@ export default function Reference({}: Props) {
                             }
                           />
                           <button type='submit' disabled={!updatedExplanation}>
-                            <CheckCircleSVG
+                            {/* <CheckCircleSVG
                               color={updatedExplanation ? '#766852' : '#D6C6AC'}
-                            />
+                            /> */}
                           </button>
                         </div>
                       </form>

@@ -5,8 +5,8 @@ export const resolvers = {
     Dictionary: () => {
       return prisma.dictionary.findMany();
     },
-    Topics: () => {
-      return prisma.topics.findMany();
-    },
+    // Topics: () => {
+    //   return prisma.topics.findMany();
+    // },
   },
 };

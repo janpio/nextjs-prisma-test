@@ -7,7 +7,7 @@
     "generate-accelerate": "npx prisma generate --accelerate",
     "dev": "npx prisma generate --data-proxy && next dev -p 3200",
     "build": "npx prisma generate --data-proxy && next build",
-    "vercel-build": "npx next build",
+    "vercel-build": "npx prisma generate --data-proxy && npx next build",
     "vercel-data-proxy-build": "npx prisma generate --data-proxy && next build",
     "vercel-accelerate-build": "npx prisma generate --accelerate && next build",
     "migrate:deploy": "prisma migrate deploy",
